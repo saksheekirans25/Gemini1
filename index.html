@@ -139,32 +139,32 @@ section {
         <div class="item">
           <h3>Caprese Salad (V) - $12.99</h3>
           <p>Fresh mozzarella, tomatoes, basil, and olive oil</p>
-          <button data-price="12.99" class="add-to-cart">Add to Cart</button>
+          <button data-price="12.99" class="add-to-cart" onclick="addToCart(event)">Add to Cart</button>
         </div>
         <div class="item">
           <h3>Bruschetta (V) - $8.99</h3>
           <p>Toasted bread with tomato, garlic, and olive oil</p>
-          <button data-price="8.99" class="add-to-cart">Add to Cart</button>
+          <button data-price="8.99" class="add-to-cart" onclick="addToCart(event)">Add to Cart</button>
         </div>
         <div class="item">
           <h3>Spaghetti Carbonara - $15.99</h3>
           <p>Creamy egg sauce with pancetta and pecorino cheese</p>
-          <button data-price="15.99" class="add-to-cart">Add to Cart</button>
+          <button data-price="15.99" class="add-to-cart"onclick="addToCart(event)">Add to Cart</button>
         </div>
         <div class="item">
           <h3>Penne Arrabbiata - $14.99</h3>
           <p>Spicy tomato sauce with garlic and chili flakes</p>
-          <button data-price="14.99" class="add-to-cart">Add to Cart</button>
+          <button data-price="14.99" class="add-to-cart"onclick="addToCart(event)">Add to Cart</button>
         </div>
         <div class="item">
           <h3>Lasagna - $16.99</h3>
           <p>Layers of pasta, meat sauce, béchamel sauce, and cheese</p>
-          <button data-price="16.99" class="add-to-cart">Add to Cart</button>
+          <button data-price="16.99" class="add-to-cart"onclick="addToCart(event)">Add to Cart</button>
         </div>
         <div class="item">
           <h3>Pizza Margherita (V) - $12.99</h3>
           <p>Tomato sauce, mozzarella cheese, and fresh basil</p>
-          <button data-price="12.99" class="add-to-cart">Add to Cart</button>
+          <button data-price="12.99" class="add-to-cart"onclick="addToCart(event)">Add to Cart</button>
         </div>
         </div>
       <div class="cart" id="cart"> </div>
@@ -197,7 +197,58 @@ const searchInput = document.getElementById("search");
 const menuItemsContainer = document.querySelector(".menu-items");
 const cartContainer = document.getElementById("cart");
 const checkoutButton = document.getElementById("checkout");
+    let cartTotal = 0; // Variable to store cart total
 
+    
+// Check if cart item already exists
+  const cartItem = cartContainer.querySelector(`[data-name="${button.textContent.split('-')[0]}"]`);
+  if (cartItem) {
+    const currentQuantity = parseInt(cartItem.querySelector("span").textContent);
+    cartItem.querySelector("span").textContent = currentQuantity + 1;
+    cartTotal += price; // Update cart total for existing item
+  } else {
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+    cartItem.dataset.name = button.textContent.split('-')[0]; // Set data attribute for item name
+    cartItem.innerHTML = `
+      <span>1</span> x ${button.textContent} - $$^{(price * 1).toFixed(2)}
+      <button class="remove-from-cart">Remove</button>
+    `;
+    cartContainer.appendChild(cartItem);
+    cartTotal += price; // Update cart total for new item
+  }
+
+  // Update cart total display (implemented later)
+}
+    // Function to remove item from cart (can be implemented if needed)
+function removeFromCart(event) {
+  const cartItem = event.target.parentElement; // Get the cart item element
+
+  // Extract price from the cart item content
+  const price = parseFloat(cartItem.querySelector("span").textContent.split("x")[1].split("-")[1]); 
+
+  // Remove the cart item from the DOM
+  cartItem.remove();
+
+  // Update cart total by subtracting the item's price
+  cartTotal -= price;
+}
+
+// Event listener for "Add to Cart" buttons
+menuItemsContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("add-to-cart")) {
+    addToCart(event);
+  }
+});
+
+// Functionality for checkout button (can be implemented to redirect to a checkout page or display cart summary)
+checkoutButton.addEventListener("click", () => {
+  if (cartTotal > 0) {
+    alert(`Your cart total is: $$ ${cartTotal.toFixed(2)}`);
+  } else {
+    alert("Your cart is empty!");
+  }
+});
 // Function to render menu items based on search term
 function renderMenuItems(filteredItems) {
   menuItemsContainer.innerHTML = ""; // Clear previous items
