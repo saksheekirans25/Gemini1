@@ -6,22 +6,22 @@
   <title>Bella Notte Italian</title>
   <style>
     body {
-      font-family: 'Sacramento', cursive; /* Fancy font */
+      font-family: 'Sacramento', cursive;
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
     }
 
     header {
-      background-color: #c72c41; /* Reddish color */
+      background-color: #c72c41;
       padding: 20px;
       text-align: center;
-      color: #fff; /* White text */
+      color: #fff;
     }
 
     h1 {
       margin: 0;
-      font-size: 3em; /* Larger headline */
+      font-size: 3em;
     }
 
     nav {
@@ -42,12 +42,12 @@
     }
 
     a {
-      color: #c72c41; /* Reddish links */
+      color: #c72c41;
       text-decoration: none;
     }
 
     a:hover {
-      color: #000; /* Black on hover */
+      color: #000;
     }
 
     main {
@@ -69,12 +69,12 @@
       margin-bottom: 10px;
       border: 1px solid #ddd;
       padding: 10px;
-      background-color: #fff; /* White background for items */
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
 
     .item h3 {
-      font-size: 1.2em; /* Slightly larger item titles */
+      font-size: 1.2em;
       margin-bottom: 5px;
     }
 
@@ -97,12 +97,12 @@
     }
 
     #checkout {
-      background-color: #c72c41; /* Reddish button */
-      color: #fff; /* White button text */
+      background-color: #c72c41;
+      color: #fff;
       padding: 10px 20px;
       border: none;
-      border-radius: 5px; /* Rounded corners */
-      cursor: pointer; /* Indicate clickable button */
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -129,6 +129,43 @@
           <button data-price="12.99" class="add-to-cart">Add to Cart</button>
         </div>
         <div class="item">
-          <h3>Tiramisu</h3>
-          <p>Ladyfingers dipped in coffee, layered with mascarpone cream</p>
-          <button data-price="8.99" class="add-to
+          <h3>Bruschetta (V)</h3>
+          <p>Toasted bread with tomato, garlic, and olive oil</p>
+          <button data-price="8.99" class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="item">
+          <h3>Spaghetti Carbonara</h3>
+          <p>Creamy egg sauce with pancetta and pecorino cheese</p>
+     <button data-price="15.99">Add to Cart</button>
+    </div>
+    <div class="item">
+     <h3>Penne Arrabbiata</h3>
+     <p>Spicy tomato sauce with garlic and chili flakes</p>
+     <button data-price="14.99">Add to Cart</button>
+    </div>
+    <div class="item">
+     <h3>Lasagna</h3>
+     <p>Layers of pasta, meat sauce, ricotta cheese, and mozzarella</p>
+     <button data-price="17.99">Add to Cart</button>
+    </div>
+    </div>
+  </section>
+
+  <section id="cart">
+   <h2>Your Cart</h2>
+   <div id="cart-items">
+    </div>
+   <p id="cart-total">Total: $0.00</p>
+   <button id="checkout">Checkout</button>
+  </section>
+
+  <section id="contact">
+   <h2>Contact Us</h2>
+   <p>Phone: (555) 555-5555</p>
+   <p>Address: 123 Main Street, Anytown, CA 12345</p>
+  </section>
+ </main>
+
+ <script src="script.js"></script>
+</body>
+</html>
